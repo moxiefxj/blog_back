@@ -10,10 +10,11 @@ var essayRouter = require('./routes/essay');
 var timeRouter = require('./routes/time');
 var browseRouter = require('./routes/browse');
 var likeRouter = require('./routes/like');
-var commentRouter = require('./routes/comment')
+var commentRouter = require('./routes/comment');
+var loginRouter = require('./routes/login')
 
 var app = express();
-
+ 
 // 跨域
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -43,6 +44,11 @@ app.use('/time',timeRouter);
 app.use('/browse',browseRouter);
 app.use('/like',likeRouter)
 app.use('/comment',commentRouter)
+app.use('/login',loginRouter)
+
+app.get('/upload',async function(req,res){
+  console.log(req.query)
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
